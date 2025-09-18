@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Loans{% endblock %}
+
+{% block content %}
+<h2 class="page-header text-center">🏦 Loans Catalog</h2>
+<div class="row">
+    {% for loan in loans %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ loan.type }}</h5>
+                <p class="card-text">
+                    <strong>Interest Rate:</strong> {{ loan.rate }}<br>
+                    <strong>Max Amount:</strong> {{ loan.max }}<br>
+                    <strong>Tenure:</strong> {{ loan.tenure }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="text-center mt-3">
+    <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}

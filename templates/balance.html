@@ -1,0 +1,26 @@
+<!-- templates/balance.html -->
+<h1>Balance Page</h1>
+<p>Your balance is: {{ profile.balance }}</p>
+<a href="/dashboard">Back to Dashboard</a>
+
+{% extends "base.html" %}
+{% block title %}Account Balance{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="page-header text-center">💰 Account Balance</h2>
+        <div class="card p-4">
+            <p><strong>Account Holder:</strong> {{ profile.name }}</p>
+            <p><strong>Account Number:</strong> {{ profile.number }}</p>
+            <p><strong>Account Type:</strong> {{ profile.type }}</p>
+            <hr>
+            <h4 class="text-center">Current Balance</h4>
+            <h1 class="text-center text-success">₹{{ "%.2f"|format(profile.balance) }}</h1>
+        </div>
+        <div class="text-center mt-3">
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SRT Bank - Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #0d1b2a, #1b263b);
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .navbar { background-color: #0a192f; }
+    .login-card {
+      background: #fff;
+      color: #000;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+      padding: 30px;
+      margin-top: 80px;
+    }
+    .btn-primary { background-color: #0a192f; border: none; }
+    .btn-primary:hover { background-color: #142941; }
+    .form-label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">🏦 SRT Bank</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Login Card -->
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="col-md-5">
+      <div class="login-card">
+        <h3 class="text-center mb-4">Login to Your Account</h3>
+
+        <!-- THIS IS THE NEW SECTION TO DISPLAY MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <!-- END OF NEW SECTION -->
+
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+        <p class="text-center mt-3 mb-0">
+          <a href="#" class="text-decoration-none" style="color:#0a192f;">Forgot Password?</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

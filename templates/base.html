@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SRT Bank{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background: #f0f4f8; font-family: Arial, sans-serif; }
+        .navbar { background-color: #004080; }
+        .navbar-brand, .nav-link { color: white !important; font-weight: 600; }
+        .card { border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .page-header { margin-top: 30px; margin-bottom: 30px; color: #004080; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard">🏦 SRT Bank</a>
+            <div class="ms-auto">
+                <a href="/logout" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Branch Locator{% endblock %}
+
+{% block content %}
+<h2 class="page-header text-center">📍 Branch Locator</h2>
+<div class="card p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Branch Name</th>
+                <th>Address</th>
+                <th>IFSC Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for branch in branches %}
+            <tr>
+                <td>{{ branch.city }}</td>
+                <td>{{ branch.name }}</td>
+                <td>{{ branch.address }}</td>
+                <td>{{ branch.ifsc }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="text-center mt-3">
+    <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}

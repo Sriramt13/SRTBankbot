@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Chatbot{% endblock %}
+
+{% block extra_head %}
+<style>
+    #chat-container { max-width: 800px; margin: auto; }
+    #chat-window { height: 60vh; border: 1px solid #ccc; border-radius: 10px; overflow-y: auto; padding: 15px; }
+    #chat-input-group { display: flex; margin-top: 15px; }
+    #chat-input { flex-grow: 1; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="chat-container">
+    <h2 class="page-header text-center">🤖 BankBot AI Assistant</h2>
+    <div class="card p-3">
+        <div id="chat-window">
+            <div class="mb-2"><b>Bot:</b> Hello! How can I assist you today?</div>
+        </div>
+        <div id="chat-input-group">
+            <input type="text" id="userInput" class="form-control" placeholder="Ask about balance, loans, cards...">
+            <button id="sendBtn" class="btn btn-primary">Send</button>
+        </div>
+        <small class="text-muted text-center mt-2">Last updated: {{ now }}</small>
+    </div>
+     <div class="text-center mt-3">
+        <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>
+
+<script>
+    async function sendMessage() {
+        const input = document.getElementById("userInput");
+        const message = input.value.trim();
+        if (!message) return;
+
+        const chatWindow = document.getElementById("chat-window");
+        chatWindow.innerHTML += `<div class="mb-2 text-end"><b>You:</b> ${message}</div>`;
+        input.value = "";
+
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: message })
+        });
+
+        const data = await response.json();
+        chatWindow.innerHTML += `<div class="mb-2"><b>Bot:</b> ${data.reply}</div>`;
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    document.getElementById("sendBtn").addEventListener("click", sendMessage);
+    document.getElementById("userInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+</script>
+{% endblock %}
