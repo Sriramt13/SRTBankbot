@@ -1,5 +1,3 @@
-# train.py (Using a pre-trained model for much higher accuracy)
-
 import spacy
 from spacy.training.example import Example
 import random
@@ -55,7 +53,7 @@ nlp = spacy.load("en_core_web_sm")
 print("Loaded pre-trained 'en_core_web_sm' model.")
 # ---------------------------------
 
-# Add the intent classifier (textcat)
+# Add the intent classifier (textcat) if it doesn't exist
 if "textcat" not in nlp.pipe_names:
     textcat = nlp.add_pipe("textcat", last=True)
 else:
@@ -70,10 +68,10 @@ if "ner" not in nlp.pipe_names:
 else:
     ner = nlp.get_pipe("ner")
     
-# Add our custom entity labels. 
-# The pre-trained model already knows "PERSON" and "MONEY", but we add our own examples.
+# Add our custom entity labels.
 ner.add_label("MONEY")
 ner.add_label("ACCOUNT_NUMBER")
+# NOTE: "PERSON" is already known by the pre-trained model, but we add it to be safe
 ner.add_label("PERSON")
 
 # --- This is the corrected training loop for fine-tuning ---
@@ -83,7 +81,7 @@ pipe_exceptions = ["textcat", "ner"]
 unaffected_pipes = [pipe for pipe in nlp.pipe_names if pipe not in pipe_exceptions]
 
 with nlp.disable_pipes(*unaffected_pipes):
-    # Use nlp.begin_training() to initialize the new components
+    # Use nlp.begin_training() to initialize ONLY the new components
     optimizer = nlp.begin_training()
     for i in range(20):
         random.shuffle(INTENT_EXAMPLES)
@@ -110,4 +108,3 @@ with nlp.disable_pipes(*unaffected_pipes):
 # Save the final, fine-tuned model
 nlp.to_disk(output_dir)
 print(f"\n✅ Fine-tuned AI model saved to '{output_dir}'.")
-
