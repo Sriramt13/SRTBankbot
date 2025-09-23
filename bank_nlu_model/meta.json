@@ -148,15 +148,15 @@
     ],
     "textcat":[
       "greet",
-      "card_inquiry",
-      "out_of_scope",
+      "transfer_money",
       "transaction_inquiry",
-      "branch_locator",
       "goodbye",
+      "out_of_scope",
+      "branch_locator",
       "loan_inquiry",
       "thanks",
       "block_card",
-      "transfer_money",
+      "card_inquiry",
       "check_balance"
     ]
   },

@@ -1,26 +1,31 @@
 text,intent,response,entities
 hi,greet,"👋 Hello! How can I help you today?",
-hello,greet,"👋 Hi there! Ask me about your balance or transactions.",
+hello,greet,"👋 Hi there! Ask me about your balance, transactions, or loans.",
+hey,greet,"👋 Hey! What can I do for you?",
+good morning,greet,"Good morning! How can I assist?",
 bye,goodbye,"👋 Goodbye! Have a great day.",
-what is my balance,check_balance,"💰 I can help with that. First, please provide your account number.",
+goodbye,goodbye,"👋 See you next time.",
+what is my balance,check_balance,"💰 I can help with that. First, please provide your account number for verification.",
 check balance,check_balance,"💰 Of course. What is your account number?",
 show my account balance,check_balance,"💰 I'd be happy to check your balance. What is your account number?",
-last transactions,transaction_inquiry,"For a detailed statement, please visit the 'Transactions' page.",
+can you tell me my balance,check_balance,"💰 I can certainly help with that. What is your account number?",
+account balance,check_balance,"💰 I can help with your account balance. Please provide your account number.",
+last transactions,transaction_inquiry,"For a detailed statement, please click the 'Transactions' card on your dashboard.",
+show transaction history,transaction_inquiry,"You can see your full transaction history on the 'Transactions' page.",
 loan,loan_inquiry,"🏦 We offer Personal and Home Loans. You can explore options on the 'Loans' page.",
+loan details,loan_inquiry,"🏦 You can compare loan types and interest rates in the 'Loan' section.",
 cards,card_inquiry,"💳 You can manage your cards on the 'Cards' page.",
 block my card,block_card,"🚨 Block your card immediately from the 'Cards' page or by calling our helpline.",
 branch details,branch_locator,"You can find all our branch addresses and timings on the 'Branches' page.",
-transfer,transfer_money,"💸 OK. Who should I send money to?",
-send money,transfer_money,"💸 Happy to help. What is the name of the recipient?",
-thank you,thanks,"You're welcome!",
+find a branch,branch_locator,"Please visit the 'Branches' page on your dashboard to find the one nearest to you.",
+transfer,transfer_money,"💸 OK, let's send some money. Who should I send it to?",
+send money,transfer_money,"💸 Happy to help with that. What is the name of the recipient?",
+i need to send money,transfer_money,"💸 I can help with that. To whom would you like to send money?",
+make a payment,transfer_money,"💸 OK. Who is the payment for?",
+thank you,thanks,"You're welcome! Is there anything else I can help with?",
+thanks,thanks,"Happy to help! Let me know if you need anything else.",
 send 500 rupees to Teja,transfer_money,"",PERSON:Teja|MONEY:500
 transfer 1000 to Sri,transfer_money,"",PERSON:Sri|MONEY:1000
-pay Ramesh 2500,transfer_money,"",PERSON:Ramesh|MONEY:2500
-send 100 to Priya,transfer_money,"",PERSON:Priya|MONEY:100
-pay Kumar 50,transfer_money,"",PERSON:Kumar|MONEY:50
-transfer 2000 to Anjali,transfer_money,"",PERSON:Anjali|MONEY:2000
-i want to send 200 to sai,transfer_money,"",PERSON:sai|MONEY:200
-can you send 750 to charan,transfer_money,"",PERSON:charan|MONEY:750
 my account number is 96182240,check_balance,"",ACCOUNT_NUMBER:96182240
 it's 96182240,check_balance,"",ACCOUNT_NUMBER:96182240
-how's the weather,out_of_scope,"I can only help with banking questions.",
+how's the weather,out_of_scope,"I'm the SRT Bank assistant, so I can only help with banking questions. For weather, I'd recommend a weather app.",

@@ -20,7 +20,7 @@
         #chat-input input { flex: 1; padding: 10px; border: none; outline: none; }
         #chat-input button { border: none; background: #004080; color: white; padding: 10px 15px; cursor: pointer; }
         
-        /* This is the new style for the intent label */
+        /* This is the style for the intent label */
         .intent-label {
             display: block;
             margin-top: 8px;
@@ -65,6 +65,7 @@
     </div>
 
     <script>
+        // This function shows and hides the chatbot window when the "Chatbot" card is clicked.
         function toggleChat() {
             const chatbox = document.getElementById("chatbox");
             if (chatbox.style.display === "flex") {
@@ -74,36 +75,44 @@
             }
         }
 
+        // This is the main function that handles sending messages to the AI.
         async function sendMessage() {
             const input = document.getElementById("userInput");
             const message = input.value.trim();
-            if (!message) return;
+            if (!message) return; // Don't send empty messages
+
             const chatMessages = document.getElementById("chat-messages");
+            // Immediately display the user's message for a responsive feel.
             chatMessages.innerHTML += `<div class="mb-2 text-end"><b>You:</b> ${message}</div>`;
-            input.value = "";
+            input.value = ""; // Clear the input box
+
+            // Send the user's message to our Python backend API.
             const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: message })
             });
+            
+            // Get the response data (reply and intent) from the backend.
             const data = await response.json();
             
-            // --- This is the corrected part ---
-            // Create the bot message HTML
+            // Create the bot message HTML.
             let botHtml = `<div class="mb-2"><b>Bot:</b> ${data.reply}`;
-            // If the server sent an intent, add the label
+            
+            // If the server sent an intent, add the special green label.
             if (data.intent && data.intent !== "slot_filling" && data.intent !== "error" && data.intent !== "n/a") {
                 botHtml += `<span class="intent-label">✓ ${data.intent}</span>`;
             } else if (data.intent === "out_of_scope") {
                  botHtml += `<span class="intent-label" style="color: #6c757d;">● Chitchat Response</span>`;
             }
             botHtml += `</div>`;
-            // ---------------------------------
             
+            // Add the final HTML to the chat window and scroll to the bottom.
             chatMessages.innerHTML += botHtml;
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        // These lines make the "Send" button and the "Enter" key work.
         document.getElementById("sendBtn").addEventListener("click", sendMessage);
         document.getElementById("userInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") { sendMessage(); }
@@ -111,4 +120,3 @@
     </script>
 </body>
 </html>
-
