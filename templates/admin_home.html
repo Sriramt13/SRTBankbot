@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - SRT Bank Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1f2937; /* Dark background matching login/home */
+            color: #f3f4f6;
+            margin: 0; padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #f3f4f6;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background: #374151; /* Dark card background */
+            width: 250px;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+            color: #f3f4f6;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            background: #4b5563;
+        }
+        .card h2 {
+            margin-bottom: 15px;
+            color: #fbbf24; /* Highlight color for headings */
+        }
+        .card p {
+            color: #d1d5db;
+            margin-bottom: 20px;
+        }
+        .card a, .card button {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #3b82f6;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card a:hover, .card button:hover {
+            background: #2563eb;
+        }
+        .logout {
+            display: block;
+            text-align: center;
+            margin: 50px auto 0;
+            color: #ef4444;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="cards">
+            <div class="card">
+                <h2>View Logs</h2>
+                <p>Check the last 50 user queries and AI responses.</p>
+                <a href="{{ url_for('view_logs') }}">Go to Logs</a>
+            </div>
+            <div class="card">
+                <h2>Training Data</h2>
+                <p>Add or edit training examples for the chatbot.</p>
+                <a href="{{ url_for('admin_training') }}">Manage Training</a>
+            </div>
+            <div class="card">
+                <h2>Retrain Model</h2>
+                <p>Retrain the AI model with updated training data.</p>
+                <form method="POST" action="{{ url_for('retrain_model') }}">
+                    <button type="submit">Retrain AI</button>
+                </form>
+            </div>
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+    </div>
+</body>
+</html>
