@@ -1,5 +1,3 @@
-# app.py (Milestone 4 – Full Admin & User Flow)
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from datetime import datetime
 import spacy, os, csv, random, sqlite3, pandas as pd, subprocess
