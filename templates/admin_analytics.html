@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard{% endblock %}
+{% block content %}
+
+<h2 class="text-center mb-4">📊 Chatbot Analytics</h2>
+
+<div class="text-center">
+    <form action="/admin/analytics" method="post">
+        <button type="submit" class="btn btn-primary mb-3">🔁 Refresh Analytics</button>
+    </form>
+</div>
+
+<div class="card p-3">
+    <h4>Intent Distribution</h4>
+    <img src="{{ url_for('static', filename='analytics/intent_distribution.png') }}" 
+         class="img-fluid rounded shadow mb-4" alt="Intent Distribution">
+
+    <h4>Top 10 Queries</h4>
+    <img src="{{ url_for('static', filename='analytics/top_queries.png') }}" 
+         class="img-fluid rounded shadow mb-4" alt="Top Queries">
+
+    <h4>Out-of-Scope Queries</h4>
+    <img src="{{ url_for('static', filename='analytics/out_of_scope.png') }}" 
+         class="img-fluid rounded shadow mb-4" alt="Out of Scope">
+</div>
+
+<div class="text-center mt-3">
+    <a href="/admin" class="btn btn-secondary">⬅ Back to Admin Dashboard</a>
+</div>
+
+{% endblock %}

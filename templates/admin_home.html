@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #1f2937; /* Dark background matching login/home */
+            background: #1f2937;
             color: #f3f4f6;
             margin: 0; padding: 0;
         }
@@ -29,7 +29,7 @@
             justify-content: center;
         }
         .card {
-            background: #374151; /* Dark card background */
+            background: #374151;
             width: 250px;
             padding: 30px 20px;
             border-radius: 12px;
@@ -44,7 +44,7 @@
         }
         .card h2 {
             margin-bottom: 15px;
-            color: #fbbf24; /* Highlight color for headings */
+            color: #fbbf24;
         }
         .card p {
             color: #d1d5db;
@@ -83,11 +83,13 @@
                 <p>Check the last 50 user queries and AI responses.</p>
                 <a href="{{ url_for('view_logs') }}">Go to Logs</a>
             </div>
+
             <div class="card">
                 <h2>Training Data</h2>
                 <p>Add or edit training examples for the chatbot.</p>
                 <a href="{{ url_for('admin_training') }}">Manage Training</a>
             </div>
+
             <div class="card">
                 <h2>Retrain Model</h2>
                 <p>Retrain the AI model with updated training data.</p>
@@ -95,7 +97,15 @@
                     <button type="submit">Retrain AI</button>
                 </form>
             </div>
+
+            <!-- ✅ NEW ANALYTICS DASHBOARD CARD -->
+            <div class="card">
+                <h2>Analytics Dashboard</h2>
+                <p>View chatbot performance charts and trends.</p>
+                <a href="{{ url_for('admin_analytics') }}">View Analytics</a>
+            </div>
         </div>
+
         <a href="{{ url_for('logout') }}" class="logout">Logout</a>
     </div>
 </body>

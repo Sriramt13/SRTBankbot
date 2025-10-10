@@ -1,16 +1,16 @@
 {
   "labels":[
-    "transfer_money",
-    "transaction_inquiry",
-    "block_card",
-    "goodbye",
-    "loan_inquiry",
-    "branch_locator",
-    "thanks",
-    "out_of_scope",
-    "greet",
     "card_inquiry",
-    "check_balance"
+    "branch_locator",
+    "transaction_inquiry",
+    "loan_inquiry",
+    "check_balance",
+    "out_of_scope",
+    "block_card",
+    "transfer_money",
+    "thanks",
+    "greet",
+    "goodbye"
   ],
   "threshold":0.0,
   "positive_label":null
