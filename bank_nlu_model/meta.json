@@ -147,17 +147,18 @@
       "WORK_OF_ART"
     ],
     "textcat":[
-      "out_of_scope",
-      "card_inquiry",
-      "loan_inquiry",
-      "check_balance",
-      "block_card",
-      "transfer_money",
       "greet",
+      "transfer_money",
+      "block_card",
+      "food",
       "thanks",
-      "goodbye",
+      "loan_inquiry",
       "branch_locator",
-      "transaction_inquiry"
+      "check_balance",
+      "goodbye",
+      "card_inquiry",
+      "transaction_inquiry",
+      "out_of_scope"
     ]
   },
   "pipeline":[
